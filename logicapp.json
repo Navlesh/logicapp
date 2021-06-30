@@ -1,0 +1,45 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Set_TestId": {
+                "inputs": {
+                    "name": "TestId",
+                    "value": "This is another sample message"
+                },
+                "runAfter": {
+                    "TestId": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "SetVariable"
+            },
+            "TestId": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "TestId",
+                            "type": "string",
+                            "value": "This is a sample message"
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {},
+        "triggers": {
+            "Recurrence": {
+                "recurrence": {
+                    "frequency": "Hour",
+                    "interval": 3
+                },
+                "type": "Recurrence"
+            }
+        }
+    },
+    "parameters": {}
+}
